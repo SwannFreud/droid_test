@@ -1,0 +1,28 @@
+try:
+    import androidhelper as android
+except importError:
+    import android
+
+def display_message(title, message)
+    droid.dialogCreateAlert(title, message, )
+    droid.dialogSetPositiveButtonText('Oui')
+    droid.dialogSetNegativeButtonText('Non')
+    droid.dialogShow()
+    response = droid.dialogGetResponse().result
+    droid.dialogDismiss()
+    return response
+    
+def get_value(title):
+    i = 0
+    debut = ""
+    message = "Saisissez un nombre entre 1 et 100"
+    while (i < 1) or (i > 100):
+        response = droid.dialogGetInput(title, debut + message, ) 
+        i = int(response.result)
+        if i < 1:
+            debut = "%d est trop petit. " % i
+        elif i > 100:
+            debut = "%d est trop grand. " % i
+        
+    return i
+    
