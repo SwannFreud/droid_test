@@ -1,9 +1,12 @@
+# -*- coding: utf-8 -*-
+
 try:
     import androidhelper as android
 except importError:
     import android
+from math import fabs
 
-def display_message(title, message)
+def display_message(title, message):
     droid.dialogCreateAlert(title, message, )
     droid.dialogSetPositiveButtonText('Oui')
     droid.dialogSetNegativeButtonText('Non')
@@ -23,6 +26,26 @@ def get_value(title):
             debut = "%d est trop petit. " % i
         elif i > 100:
             debut = "%d est trop grand. " % i
-        
     return i
     
+    
+display_message("Bienvenu", "Bienvenu sur Chaud - Froid, le jeu créé pour Kelly")
+display_message("Bienvenu", "Le maître du jeu doit choisir un nombre. Donnez lui la tablette...")
+searched_number = get_value("Master")
+display_message("Début du jeu", "Merci maître du jeu, donnez maintenant la tablette au jouer...")
+
+entered_number = [0, ]
+while entered_number[-1] != searched_number:
+    entered_number.append(get_value("joueur"))
+    if entered_number[-1] != searched_number
+        diff = fabs(searched_number - entered_number[-1])
+        previous_diff = fabs(searched_number - entered_number[-2])
+        if diff < previous_diff:
+            display_message("Plus chaud", "%d est plus proche que %d..." % (entered_number[-1], entered_number[-2]))
+        elif diff > previous_diff:
+            display_message("Plus froid", "%d est moins proche que %d..." % (entered_number[-1], entered_number[-2]))
+        else:
+            display_message("Etonnant", "%d est à la même distance que %d..." % (entered_number[-1], entered_number[-2]))
+
+try_count = len(entered_number) - 1
+display_message("Bravo !!!", "Vous avez trouvez en %d coups, c'était : %d" % (try_count, searched_number))
